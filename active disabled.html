@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Active & Disabled States</title>
+    <style>
+        /* Active State */
+        button:active {
+            background-color: red;
+            color: white;
+            transform: scale(0.95);
+        }
+
+        /* Disabled State */
+        button:disabled {
+            background-color: gray;
+            color: white;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="text-align: center;">CSS Active & Disabled Example</h1>
+
+    <!-- Active Button -->
+    <button>Click Me (Active)</button>
+
+    <br><br>
+
+    <!-- Disabled Button -->
+    <button disabled>Disabled Button</button>
+
+</body>
+
+</html>

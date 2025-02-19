@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Precise Positioning</title>
+    <style>
+        .container {
+            position: relative;
+            width: 400px;
+            height: 300px;
+            border: 2px solid black;
+            margin: 50px auto;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            text-align: center;
+            line-height: 100px;
+            position: absolute;
+        }
+
+        .top-left {
+            top: 0;
+            left: 0;
+        }
+
+        .top-right {
+            top: 0;
+            right: 0;
+        }
+
+        .bottom-left {
+            bottom: 0;
+            left: 0;
+        }
+
+        .bottom-right {
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="text-align: center;">CSS Precise Positioning</h1>
+
+    <div class="container">
+        <div class="box top-left">Top Left</div>
+        <div class="box top-right">Top Right</div>
+        <div class="box bottom-left">Bottom Left</div>
+        <div class="box bottom-right">Bottom Right</div>
+    </div>
+
+</body>
+
+</html>

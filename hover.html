@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Hover Example</title>
+    <style>
+        /* Hover effect for button */
+        button:hover {
+            background-color: green;
+            color: white;
+            transform: scale(1.1);
+            transition: 0.3s;
+        }
+
+        /* Hover effect for a div */
+        .hover-box {
+            width: 200px;
+            height: 100px;
+            background-color: lightblue;
+            text-align: center;
+            line-height: 100px;
+            margin: 20px auto;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .hover-box:hover {
+            background-color: blue;
+            color: white;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="text-align: center;">CSS Hover Effect</h1>
+
+    <!-- Button Hover -->
+    <button>Hover Over Me</button>
+
+    <br><br>
+
+    <!-- Div Hover -->
+    <div class="hover-box">Hover Over Me</div>
+
+</body>
+
+</html>
