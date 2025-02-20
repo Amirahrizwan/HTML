@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Horizontal Scrollspy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            position: relative;
+        }
+
+        .scrollspy-example {
+            position: relative;
+            height: 300px;
+            overflow-x: auto;
+            white-space: nowrap;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        .scrollspy-example div {
+            display: inline-block;
+            width: 600px;
+            height: 100%;
+            padding: 20px;
+            background-color: #f8f9fa;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbar-example" data-bs-offset="0" tabindex="0">
+
+    <nav id="navbar-example" class="navbar navbar-light bg-light fixed-top">
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a class="nav-link" href="#section1">Section 1</a></li>
+            <li class="nav-item"><a class="nav-link" href="#section2">Section 2</a></li>
+            <li class="nav-item"><a class="nav-link" href="#section3">Section 3</a></li>
+        </ul>
+    </nav>
+
+    <div class="container mt-5 pt-5">
+        <h2>Horizontal Scrollspy</h2>
+        <div id="scrollspyContainer" class="scrollspy-example">
+            <div id="section1">
+                <h4>Section 1</h4>
+                <p>Content for section 1.</p>
+            </div>
+            <div id="section2">
+                <h4>Section 2</h4>
+                <p>Content for section 2.</p>
+            </div>
+            <div id="section3">
+                <h4>Section 3</h4>
+                <p>Content for section 3.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
