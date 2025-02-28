@@ -1,0 +1,17 @@
+document.getElementById("demo").innerHTML = "Hello, DOM!";
+
+document.getElementsByClassName("example")[0].style.color = "blue";
+
+document.getElementsByTagName("p")[0].style.fontSize = "20px";
+
+document.querySelector("#demo").style.backgroundColor = "yellow";
+
+document.querySelectorAll(".example")[0].style.fontWeight = "bold";
+
+let newElement = document.createElement("h2");
+newElement.innerText = "New Heading";
+document.body.appendChild(newElement);
+
+document.getElementById("demo").addEventListener("click", function() {
+alert("Element Clicked!");
+});

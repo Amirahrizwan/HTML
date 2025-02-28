@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Form Validation</title>
+    <style>
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+        input:invalid {
+            border: 2px solid red;
+        }
+
+        input:valid {
+            border: 2px solid green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="myForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        <span class="error" id="nameError"></span>
+        <br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <span class="error" id="emailError"></span>
+        <br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" required minlength="6">
+        <span class="error" id="passwordError"></span>
+        <br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        document.getElementById("myForm").addEventListener("input", function (event) {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            document.getElementById("nameError").innerText = name ? "" : "Name is required";
+            document.getElementById("emailError").innerText = email.includes("@") ? "" : "Enter a valid email";
+            document.getElementById("passwordError").innerText = password.length >= 6 ? "" : "Password must be at least 6 characters";
+        });
+
+        document.getElementById("myForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            alert("Form submitted successfully!");
+        });
+    </script>
+
+</body>
+
+</html>
