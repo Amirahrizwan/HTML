@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      margin-right: 10px;
+      width: 200px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      padding: 10px;
+      margin: 5px 0;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    button.remove {
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button.remove:hover {
+      background-color: #e60000;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Shopping List</h1>
+  <input type="text" id="item" placeholder="Enter item">
+  <button onclick="addItem()">Add to List</button>
+
+  <ul id="shoppingList"></ul>
+
+  <script>
+    // Function to add an item to the shopping list
+    function addItem() {
+      const itemInput = document.getElementById("item");
+      const itemValue = itemInput.value.trim();
+
+      if (itemValue !== "") {
+        const shoppingList = document.getElementById("shoppingList");
+
+        // Create a new list item
+        const li = document.createElement("li");
+
+        // Add item text to the list item
+        li.textContent = itemValue;
+
+        // Create a remove button
+        const removeButton = document.createElement("button");
+        removeButton.textContent = "Remove";
+        removeButton.className = "remove";
+        removeButton.onclick = function () {
+          shoppingList.removeChild(li); // Remove the item from the list
+        };
+
+        // Append the remove button to the list item
+        li.appendChild(removeButton);
+
+        // Append the list item to the shopping list
+        shoppingList.appendChild(li);
+
+        // Clear the input field
+        itemInput.value = "";
+      } else {
+        alert("Please enter an item.");
+      }
+    }
+  </script>
+
+</body>
+</html>
