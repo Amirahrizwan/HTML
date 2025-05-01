@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rolling Dice</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f7f7f7;
+    }
+    #dice {
+      font-size: 100px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffffff;
+      width: 120px;
+      height: 120px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 20px;
+      cursor: pointer;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div id="dice">1</div>
+  <button onclick="rollDice()">Roll Dice</button>
+
+  <script>
+    // Function to roll the dice
+    function rollDice() {
+      const diceFace = Math.floor(Math.random() * 6) + 1; // Random number between 1 and 6
+      document.getElementById("dice").textContent = diceFace; // Display the dice result
+    }
+  </script>
+</body>
+</html>
