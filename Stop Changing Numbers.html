@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stop Changing Counter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+      background-color: #f5f5f5;
+    }
+    .counter {
+      font-size: 48px;
+      margin: 20px;
+    }
+    .buttons {
+      display: flex;
+      gap: 10px;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+    button.increment {
+      background-color: #4CAF50;
+      color: white;
+    }
+    button.decrement {
+      background-color: #f44336;
+      color: white;
+    }
+    button.reset {
+      background-color: #008CBA;
+      color: white;
+    }
+    button.freeze {
+      background-color: #9E9E9E;
+      color: white;
+    }
+    button:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="counter" id="counter">0</div>
+  <div class="buttons">
+    <button class="increment" id="incrementBtn" onclick="changeCounter(1)">Increment</button>
+    <button class="decrement" id="decrementBtn" onclick="changeCounter(-1)">Decrement</button>
+    <button class="reset" id="resetBtn" onclick="resetCounter()">Reset</button>
+    <button class="freeze" id="freezeBtn" onclick="freezeCounter()">Freeze</button>
+  </div>
+
+  <script>
+    let count = 0;
+    let isFrozen = false; // Flag to check if the counter is frozen
+
+    // Function to change the counter (increment/decrement)
+    function changeCounter(value) {
+      if (isFrozen) {
+        return; // Prevent any changes if the counter is frozen
+      }
+      count += value;
+      document.getElementById("counter").textContent = count;
+    }
+
+    // Function to reset the counter to 0
+    function resetCounter() {
+      if (isFrozen) {
+        return; // Prevent resetting if the counter is frozen
+      }
+      count = 0;
+      document.getElementById("counter").textContent = count;
+    }
+
+    // Function to freeze the counter (stop changes)
+    function freezeCounter() {
+      isFrozen = true; // Set the flag to true
+      document.getElementById("incrementBtn").disabled = true;  // Disable buttons
+      document.getElementById("decrementBtn").disabled = true;
+      document.getElementById("resetBtn").disabled = true;
+      document.getElementById("freezeBtn").textContent = "Frozen"; // Change button text
+      document.getElementById("freezeBtn").style.backgroundColor = "#BDBDBD"; // Change button color
+    }
+  </script>
+
+</body>
+</html>
