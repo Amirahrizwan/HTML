@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .task {
+      margin: 10px 0;
+      display: flex;
+      justify-content: space-between;
+    }
+    .task.completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <h1>To-Do List</h1>
+
+  <input type="text" id="taskInput" placeholder="Add a new task" />
+  <button onclick="addTask()">Add Task</button>
+
+  <ul id="taskList"></ul>
+
+  <script>
+    // Function to add a new task
+    function addTask() {
+      const taskInput = document.getElementById("taskInput");
+      const taskText = taskInput.value.trim();
+      
+      if (taskText !== "") {
+        const taskList = document.getElementById("taskList");
+
+        // Create new task element
+        const li = document.createElement("li");
+        li.className = "task";
+        
+        // Add the task text
+        const span = document.createElement("span");
+        span.textContent = taskText;
+        li.appendChild(span);
+        
+        // Add the "complete" button
+        const completeButton = document.createElement("button");
+        completeButton.textContent = "Complete";
+        completeButton.onclick = () => markCompleted(li);
+        li.appendChild(completeButton);
+
+        // Add the "delete" button
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.onclick = () => deleteTask(li);
+        li.appendChild(deleteButton);
+
+        // Append the new task to the task list
+        taskList.appendChild(li);
+
+        // Clear the input field
+        taskInput.value = "";
+      }
+    }
+
+    // Function to mark a task as completed
+    function markCompleted(task) {
+      task.classList.toggle("completed");
+    }
+
+    // Function to delete a task
+    function deleteTask(task) {
+      task.remove();
+    }
+  </script>
+</body>
+</html>
