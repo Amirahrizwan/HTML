@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Today Calendar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+      width: 300px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .calendar div {
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f0f0f0;
+    }
+    .header {
+      font-weight: bold;
+      background-color: #4CAF50;
+      color: white;
+    }
+    .today {
+      background-color: #ffeb3b;
+    }
+    #currentDate {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="currentDate"></div>
+  <div class="calendar" id="calendar"></div>
+
+  <script>
+    function generateCalendar() {
+      const today = new Date();
+      const currentDate = today.getDate();
+      const currentMonth = today.getMonth(); // 0 = January, 11 = December
+      const currentYear = today.getFullYear();
+
+      // Display current date at the top
+      document.getElementById("currentDate").textContent = `Today: ${today.toDateString()}`;
+
+      // Get the first day of the month (0 = Sunday, 6 = Saturday)
+      const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+
+      // Get the number of days in the month
+      const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+      const calendarDiv = document.getElementById("calendar");
+      calendarDiv.innerHTML = ""; // Clear any previous content
+
+      // Add the weekdays header
+      const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+      for (let i = 0; i < weekdays.length; i++) {
+        const dayDiv = document.createElement("div");
+        dayDiv.className = "header";
+        dayDiv.textContent = weekdays[i];
+        calendarDiv.appendChild(dayDiv);
+      }
+
+      // Add empty divs for the days before the first day of the month
+      for (let i = 0; i < firstDay; i++) {
+        const emptyDiv = document.createElement("div");
+        calendarDiv.appendChild(emptyDiv);
+      }
+
+      // Add the days of the month
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dayDiv = document.createElement("div");
+        dayDiv.textContent = day;
+
+        // Highlight today's date
+        if (day === currentDate) {
+          dayDiv.classList.add("today");
+        }
+
+        calendarDiv.appendChild(dayDiv);
+      }
+    }
+
+    // Initialize calendar
+    generateCalendar();
+  </script>
+
+</body>
+</html>
