@@ -4,41 +4,47 @@
   <meta charset="UTF-8">
   <title>Image Slider</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
     .slider {
-      position: relative;
-      max-width: 600px;
-      margin: auto;
+      width: 500px;
+      height: 300px;
+      margin: 20px auto;
       overflow: hidden;
+      position: relative;
+      border: 2px solid #ccc;
     }
+
     .slides {
       display: flex;
+      width: 100%;
+      height: 100%;
       transition: transform 0.5s ease-in-out;
+    }
+
+    .slides img {
+      width: 500px;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .buttons {
+      position: absolute;
+      top: 50%;
       width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
     }
-    .slide {
-      min-width: 100%;
-      box-sizing: border-box;
-    }
-    .slide img {
-      width: 100%;
-      vertical-align: middle;
-    }
-    .controls {
-      text-align: center;
-      margin-top: 10px;
-    }
-    .controls button {
-      padding: 10px 15px;
-      font-size: 16px;
-      margin: 5px;
+
+    .buttons button {
+      background-color: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      padding: 10px;
       cursor: pointer;
+    }
+
+    .buttons button:hover {
+      background-color: rgba(0,0,0,0.8);
     }
   </style>
 </head>
@@ -46,34 +52,33 @@
 
   <div class="slider">
     <div class="slides" id="slides">
-      <div class="slide"><img src="https://via.placeholder.com/600x300?text=Slide+1" alt="Slide 1"></div>
-      <div class="slide"><img src="https://via.placeholder.com/600x300?text=Slide+2" alt="Slide 2"></div>
-      <div class="slide"><img src="https://via.placeholder.com/600x300?text=Slide+3" alt="Slide 3"></div>
+      <img src="https://via.placeholder.com/500x300?text=Image+1" alt="Image 1">
+      <img src="https://via.placeholder.com/500x300?text=Image+2" alt="Image 2">
+      <img src="https://via.placeholder.com/500x300?text=Image+3" alt="Image 3">
+      <img src="https://via.placeholder.com/500x300?text=Image+4" alt="Image 4">
+    </div>
+    <div class="buttons">
+      <button onclick="prevSlide()">&#10094;</button>
+      <button onclick="nextSlide()">&#10095;</button>
     </div>
   </div>
 
-  <div class="controls">
-    <button onclick="prevSlide()">❮ Prev</button>
-    <button onclick="nextSlide()">Next ❯</button>
-  </div>
-
   <script>
-    let currentSlide = 0;
+    let index = 0;
     const slides = document.getElementById("slides");
-    const totalSlides = slides.children.length;
+    const total = slides.children.length;
 
-    function updateSlide() {
-      slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+    function showSlide(i) {
+      index = (i + total) % total;
+      slides.style.transform = `translateX(-${index * 500}px)`;
     }
 
     function nextSlide() {
-      currentSlide = (currentSlide + 1) % totalSlides;
-      updateSlide();
+      showSlide(index + 1);
     }
 
     function prevSlide() {
-      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-      updateSlide();
+      showSlide(index - 1);
     }
   </script>
 
