@@ -1,0 +1,44 @@
+# Import libraries
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+
+# -----------------------------------------
+# 1️⃣ BAR GRAPH: Accuracy Comparison
+# -----------------------------------------
+
+# Algorithms and their accuracies
+models = ['XGBoost', 'CNN', 'SVM']
+accuracies = [92, 88, 84] # in percentage
+
+# Plot bar chart
+plt.figure(figsize=(7,5))
+sns.barplot(x=models, y=accuracies, palette='Blues_r')
+
+plt.title('Model Accuracy Comparison', fontsize=14, fontweight='bold')
+plt.xlabel('Algorithms', fontsize=12)
+plt.ylabel('Accuracy (%)', fontsize=12)
+plt.ylim(0, 100)
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+for i, v in enumerate(accuracies):
+plt.text(i, v + 1, f"{v}%", ha='center', fontweight='bold')
+plt.show()
+
+# -----------------------------------------
+# 2️⃣ CONFUSION MATRIX for XGBoost Results
+# -----------------------------------------
+
+# Example (replace these with your model’s predictions)
+y_true = [0, 0, 1, 1, 0, 1, 0, 1, 1, 0] # actual values
+y_pred = [0, 0, 1, 1, 0, 0, 0, 1, 1, 1] # predicted values from XGBoost
+
+# Generate confusion matrix
+cm = confusion_matrix(y_true, y_pred)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm,
+display_labels=['Healthy', 'Parkinson'])
+
+# Plot confusion matrix
+fig, ax = plt.subplots(figsize=(5,4))
+disp.plot(ax=ax, cmap='Blues', colorbar=False)
+plt.title('Confusion Matrix - XGBoost Model', fontsize=14, fontweight='bold')
+plt.show()
