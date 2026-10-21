@@ -1,22 +1,51 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    text-align: center;
+:root {
+  --navy: #1b2a41;
+  --slate: #324a5f;
+  --accent: #ff6b4a;
+}
+html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+body { font-family: "Segoe UI", system-ui, sans-serif; color: #222; }
+
+/* Navigation */
+.custom-nav { background: var(--navy); }
+.custom-nav .nav-link { color: #d8dee6; }
+.custom-nav .nav-link:hover { color: var(--accent); }
+
+/* Banner */
+.banner {
+  min-height: 100vh;
+  color: #fff;
+  background: linear-gradient(rgba(27,42,65,.35), rgba(27,42,65,.35)), url("../images/banner.svg") center / cover no-repeat;
 }
 
-h1 {
-    color: blue;
+/* Sections */
+.section-title { color: var(--navy); font-weight: 700; }
+.section-title::after {
+  content: ""; display: block; width: 56px; height: 4px; margin-top: 8px;
+  background: var(--accent);
+}
+.text-center .section-title::after { margin-inline: auto; }
+
+.avatar {
+  width: 160px; height: 160px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--slate); color: #fff; font-size: 3rem; font-weight: 700;
+  border: 6px solid var(--accent);
 }
 
-p {
-    font-size: 18px;
-    color: green;
-}
+.project-card { border: 1px solid #dde2e8; transition: transform .2s, box-shadow .2s; }
+.project-card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,.1); }
 
-button {
-    background-color: orange;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
+.btn-accent { background: var(--accent); color: #fff; border: none; }
+.btn-accent:hover { background: #e55a3b; color: #fff; }
+
+/* Social */
+.social-links a {
+  display: inline-grid; place-items: center;
+  width: 56px; height: 56px; margin: 0 8px;
+  border-radius: 50%; background: var(--navy); color: #fff; font-size: 1.5rem;
+  transition: background .2s, transform .2s;
 }
+.social-links a:hover { background: var(--accent); transform: scale(1.1); }
+
+.footer { background: var(--navy); color: #c5ccd6; }
